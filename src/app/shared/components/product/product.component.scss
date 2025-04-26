@@ -1,0 +1,55 @@
+.lgImg {
+  height: 500px;
+  width: 500px;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.smImg {
+  height: 100px;
+  width: 100px;
+  .img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+.smImg {
+  display: inline-block;
+}
+
+.smimggg {
+  height: 80px;
+  width: 80px;
+  display: inline-block;
+  margin: 0 auto;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+.quantity{
+    font-size: 15px;
+    display: block;
+    // color:#ff4081;
+}
+.quantity_value{
+    color:#ff4081;
+    // margin: 10px;
+
+}
+// .button-group{
+//   width: 80%;
+// }
+.Addbutton {
+  width: 90%;
+  margin-bottom: 5px;
+  mat-icon {
+    background-color: transparent;
+  }
+}

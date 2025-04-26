@@ -1,0 +1,157 @@
+<div class="row mt-4">
+  <div class="col-md-4">
+    <div class="lgImg">
+      <img [src]="productInfo.images[0]" alt="" />
+    </div>
+    <div class="row ml-5">
+      <div
+        class="card smimggg mt-3 mr-3"
+        *ngFor="let imgg of prodImg.slice(1, 5)"
+        (click)="OnSmImg(imgg)"
+      >
+        <img [src]="imgg" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5">
+    <p class="text-info">
+      {{ productInfo.category }} | {{ productInfo.subcategory }}
+    </p>
+    <strong
+      ><h1>{{ productInfo.title }}</h1></strong
+    >
+    <ul class="d-flex" style="list-style: none">
+      <li class="m-0" *ngFor="let start of [1, 2, 3, 4, 5]">
+        <!-- <mat-icon>star</mat-icon> -->
+      </li>
+      <li>
+        <p class="ml-4">Reviwe({{ productInfo.reviews_count }}) |</p>
+      </li>
+      <li>
+        <p class="ml-4">sold:<strong>123 </strong> |</p>
+      </li>
+      <li>
+        <a href=""> <span class="ml-4">Viwe Shop</span></a>
+      </li>
+    </ul>
+    <hr />
+    <h1 class="text-danger">
+      <b>{{ productInfo.total_price }}</b>
+    </h1>
+    <div class="specification">
+      <ng-container *ngIf="productInfo.product_specifications; else onspecific">
+        <ul style="list-style: none; margin: 0; padding: 0">
+          <li *ngFor="let specification of productInfo.product_specifications">
+            <p>
+              {{ specification.specification_name }} :{{
+                specification.specification_value
+              }}
+            </p>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-template #onspecific>
+        <p class="alert alert-info alert-sm">Specification is Not Available</p>
+      </ng-template>
+    </div>
+    <hr />
+    <h1>About this Item</h1>
+    <div class="description">
+      <ng-container *ngIf="productInfo.product_description; else Nodescription">
+        <ul style="margin: 0; padding: 8px">
+          <li *ngFor="let description of productInfo.product_description">
+            <p style="font-size: 18px">
+              {{ description }}
+            </p>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-template #Nodescription>
+        <p class="alert alert-info alert-sm">Not Decsription is available</p>
+      </ng-template>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <h1 class="text-danger">
+        <b>{{ productInfo.total_price }}</b>
+      </h1>
+      <div class="free_ship mt-3 d-flex">
+        <mat-icon class="mr-2">local_shipping</mat-icon>
+        <span>Free Shipping</span>
+      </div>
+
+      <div class="shipping_to mt-3 d-flex">
+        <Span>Shipping To : </Span>
+        <select style="border-style: none">
+          <option value="Home">home</option>
+          <option value="office">Office</option>
+        </select>
+      </div>
+      <div class="quantity mt-3 d-flex">
+        <span class="mr-3">Quantity : </span>
+        <!-- <button style="border-style: n;"><i  class="plus"></i></button> -->
+        <mat-icon (click)="Ondecres()" class="mr-2">remove</mat-icon>
+        <b class="quantity_value">{{ quantity }}</b>
+        <mat-icon (click)="OnIncrece()" class="ml-2">add</mat-icon>
+      </div>
+
+      <div class="button-group text-center mt-3">
+        <button mat-raised-button color="warn" class="Addbutton">
+          Add To Cart <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          class="Addbutton"
+          style="background-color: #282a2b"
+        >
+          Buy Now
+        </button>
+      </div>
+      <div class="detail mt-3">
+        <p>Detail:</p>
+        <ng-container *ngIf="productInfo.return_policy; else nopolicy">
+          <p>Return Policy:{{ productInfo.return_policy }}</p>
+        </ng-container>
+        <ng-template #nopolicy>
+          <p class="alert alert-info alert-sm">
+            Not Return Policy is Available
+          </p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <mat-tab-group>
+    <mat-tab label="Description">
+      <ul>
+        <li
+          class="m-3"
+          style="font-size: 15px; padding: 0;"
+          *ngFor="let decsipt of productInfo.product_description"
+        >
+          {{ decsipt }}
+        </li>
+      </ul>
+    </mat-tab>
+    <mat-tab label="Product Information">
+      <p class="m-3" style="font-size: 15px">
+        {{ productInfo.product_details }}
+      </p>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<!-- <div class="row ml-5">
+  <div>
+    <div
+      class="smimggg mt-3 mr-3"
+      *ngFor="let imgg of productInfo.images.slice(1, 5)"
+    >
+      <img [src]="imgg" alt="" />
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,71 @@
+<div class="row">
+  <div
+    class="col-lg-2 col-md-2 col-sm-2 hover-card mt-2"
+    *ngFor="let prod of prodcutArr"
+  >
+    <div
+      class="card-info"
+      (mouseenter)="hoverProperty = prod"
+      (mouseleave)="hoverProperty = null"
+      [routerLink]="prod._id"
+    >
+      <div class="card">
+        <div class="image">
+          <img
+            [src]="hoverProperty === prod ? prod.images[1] : prod.images[0]"
+            alt=""
+          />
+        </div>
+      </div>
+      <p class="ml-">{{ prod.category }}</p>
+      <h3 class="prod-title text-info">{{ prod.title }}</h3>
+      <div class="price">
+        <p style="font-size: 20px" class="">
+          {{ prod.total_price }}
+        </p>
+      </div>
+    </div>
+
+    <div class="hover-buttons">
+      <button
+        mat-mini-fab
+        color="accent"
+        matTooltip="Add to Bag"
+        matTooltipPosition="left"
+        aria-label="Add to Bag"
+      >
+        <mat-icon>shopping_bag</mat-icon>
+      </button>
+
+      <button
+        mat-mini-fab
+        color="accent"
+        matTooltip="View Details"
+        matTooltipPosition="left"
+        aria-label="View Details"
+      >
+        <mat-icon>visibility</mat-icon>
+      </button>
+
+      <button
+        mat-mini-fab
+        color="accent"
+        matTooltip="Like"
+        matTooltipPosition="left"
+        aria-label="Like"
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+
+      <button
+        mat-mini-fab
+        color="accent"
+        matTooltip="Random"
+        matTooltipPosition="left"
+        aria-label="Random"
+      >
+        <mat-icon>shuffle</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
